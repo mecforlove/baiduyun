@@ -16,5 +16,5 @@ def get_opener():
         proxy_support = urllib2.ProxyHandler(proxy)
 	opener = urllib2.build_opener(proxy_support)
     # retunr urllib2.build_opener()
-	return opener
+	return urllib2.build_opener()
 
