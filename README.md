@@ -19,10 +19,11 @@ Yunhelper/
 
 - **manager.py**：在线文件管理器，支持文件浏览、文件/文件夹下载等功能。
 >**注意**：`keywords`不能包含空格。
+
 ##功能说明
 - **帮助界面**
 ``` bash
-Welcome to Yunhelper!  This is the help utility.
+    Welcome to Yunhelper!  This is the help utility.
     quit----------------------退出程序
     cd [文件夹名称]-----------类似于cd和ls合起来的功能
     pwd-----------------------打印当前目录
@@ -64,7 +65,7 @@ task: 1553645743------deleted!
 {"task_id":1553924866,"rapid_download":0,"request_id":243873697}
 ```
 ##部署环境
-@(Linux系统 |Python2.6+)
+Linux系统 Python2.6+
 ## 反馈与建议
 - 微博：[@张光超mec](http://weibo.com/u/1672920821)
 - 邮箱：<mecforlove@outlook.com>
