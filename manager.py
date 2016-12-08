@@ -27,7 +27,7 @@ def phelp():
     """
 
 def main():
-    # 测试
+    # 测试,这里需要输入百度的一个cookie值BDUSS
     cookie = 'BDUSS=*************'
 
     curr_dir = r'/'                  # 从根目录开始
