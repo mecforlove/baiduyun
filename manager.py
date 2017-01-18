@@ -28,7 +28,7 @@ def phelp():
 
 def main():
     # 测试,这里需要输入百度的一个cookie值BDUSS
-    cookie = 'BDUSS=*************'
+    cookie = 'BDUSS=*************'  # 添加BDUSS
 
     curr_dir = r'/'                  # 从根目录开始
     disk = YunDisk(cookie)           # 用自己的cookie初始化百度盘
@@ -61,7 +61,7 @@ def main():
                 except:
                     curr_dir = temp
                     print 'No such file or directory'
-            
+
         elif 'pwd' == cmd[0]:
             print curr_dir
         elif 'dl' == cmd[0]:

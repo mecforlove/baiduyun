@@ -11,7 +11,7 @@ from libs.pcs import YunDisk
 
 
 if __name__ == '__main__':
-    disk = YunDisk('BDUSS=************')
+    disk = YunDisk('BDUSS=************')  # 添加BDUSS
     result = magnets(sys.argv[1])
     lst = disk.lx_list()
     disk.del_lxs(lst)    # 删除离线列表中未完成的任务
