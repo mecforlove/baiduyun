@@ -41,7 +41,6 @@ class YunDisk(object):
         for i in lst:
             print i['server_filename']
 
-
     def dl_file(self, path):
         """
         下载指定路径下的单个文件
@@ -62,13 +61,12 @@ class YunDisk(object):
         resp = self.opener.open(req)
         # 写入文件
         with open(local_dir+'/'+filename, 'w', -1) as f:
-	    while True:
+            while True:
                 block = resp.read(20*1024)
-		if not block:
-		    break
+                if not block:
+                    break
                 f.write(block)
         print path + '--------------------downloaded successfully'
-
 
     def dl_dir_r(self, dirpath):
         """
@@ -80,7 +78,6 @@ class YunDisk(object):
                 self.dl_dir_r(i['path'])
             else:
                 self.dl_file(i['path'])
-
 
     def lx_dload(self, link, save_path):
         """
@@ -97,7 +94,6 @@ class YunDisk(object):
         except:
             pass
 
-
     def lx_list(self, status=1, limit=10):
         """
         获取离线任务列表
@@ -112,7 +108,6 @@ class YunDisk(object):
         resp = self.opener.open(req, urllib.urlencode(req_data))
         return json.loads(resp.read())
 
-
     def del_lxs(self, lst):
         """
         批量删除离线任务列表
@@ -126,7 +121,6 @@ class YunDisk(object):
             resp = self.opener.open(req, urllib.urlencode(req_data))
             if resp.read():
                 print 'task: ' + str(task['task_id']) + '------deleted!'
-
 
     def __str__(self):
         return 'YunDisk: ' + self.cookie
