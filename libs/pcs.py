@@ -12,7 +12,6 @@ import json
 
 
 class YunDisk(object):
-
     def __init__(self, cookie):
         self.cookie = cookie
         self.opener = utils.get_opener()
@@ -55,14 +54,15 @@ class YunDisk(object):
 
         if isinstance(path, unicode):
             path = path.encode('utf-8')
-        url = 'http://pcs.baidu.com/rest/2.0/pcs/file?path=' + urllib.quote(path) + '&method=download&app_id=266719'
+        url = 'http://pcs.baidu.com/rest/2.0/pcs/file?path=' + urllib.quote(
+            path) + '&method=download&app_id=266719'
         req = urllib2.Request(url)
         req.add_header('Cookie', self.cookie)
         resp = self.opener.open(req)
         # 写入文件
-        with open(local_dir+'/'+filename, 'w', -1) as f:
+        with open(local_dir + '/' + filename, 'w', -1) as f:
             while True:
-                block = resp.read(20*1024)
+                block = resp.read(20 * 1024)
                 if not block:
                     break
                 f.write(block)
@@ -104,7 +104,7 @@ class YunDisk(object):
         url = 'http://pcs.baidu.com/rest/2.0/pcs/services/cloud_dl?method=list_task&app_id=250528&'
         req = urllib2.Request(url)
         req.add_header('Cookie', self.cookie)
-        req_data = {'status': 1}   
+        req_data = {'status': 1}
         resp = self.opener.open(req, urllib.urlencode(req_data))
         return json.loads(resp.read())
 
@@ -117,7 +117,7 @@ class YunDisk(object):
         req = urllib2.Request(url)
         req.add_header('Cookie', self.cookie)
         for task in lst['task_info']:
-            req_data = {'task_id': task['task_id']}   
+            req_data = {'task_id': task['task_id']}
             resp = self.opener.open(req, urllib.urlencode(req_data))
             if resp.read():
                 print 'task: ' + str(task['task_id']) + '------deleted!'

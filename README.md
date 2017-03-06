@@ -64,6 +64,10 @@ task: 1553645743------deleted!
 {"task_id":1553924840,"rapid_download":0,"request_id":243813444}
 {"task_id":1553924866,"rapid_download":0,"request_id":243873697}
 ```
+- **本地后台下载**
+``` bash
+./downloader.py /来自：iPhone/ >> log &
+```
 ##部署环境
 Linux系统 Python2.6+
 ## 反馈与建议

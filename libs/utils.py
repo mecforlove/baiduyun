@@ -8,13 +8,11 @@
 import urllib2
 
 
-
 def get_opener():
-	"""获取要使用的opener"""
-	# 设置代理
-	proxy = {'http': 'proxy.tencent.com:8080'}
-        proxy_support = urllib2.ProxyHandler(proxy)
-	opener = urllib2.build_opener(proxy_support)
+    """获取要使用的opener"""
+    # 设置代理
+    proxy = {'http': 'proxy.tencent.com:8080'}
+    proxy_support = urllib2.ProxyHandler(proxy)
+    opener = urllib2.build_opener(proxy_support)
     # retunr urllib2.build_opener()
-	return urllib2.build_opener()
-
+    return urllib2.build_opener()

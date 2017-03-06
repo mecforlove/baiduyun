@@ -1,6 +1,6 @@
 #!/usr/bin/python  
 # -*- coding:utf-8 -*-  
-# File Name: yunapi.py
+# File Name: manager.py
 # Author: meczhang
 # Mail: mecforlove@outlook.com
 # Created Time: 2016-08-15 10:05:08
@@ -14,6 +14,8 @@ import readline
 from libs.pcs import YunDisk
 from libs import source
 from libs import utils
+from libs.phelper import corlor_print
+
 
 def phelp():
     print """
@@ -26,35 +28,41 @@ def phelp():
     ?-------------------------打印此帮助信息
     """
 
+
 def main():
     # 测试,这里需要输入百度的一个cookie值BDUSS
-    cookie = 'BDUSS=*************'  # 添加BDUSS
+    cookie = 'BDUSS=xxxxxx'
 
-    curr_dir = r'/'                  # 从根目录开始
-    disk = YunDisk(cookie)           # 用自己的cookie初始化百度盘
+    curr_dir = r'/'  # 从根目录开始
+    disk = YunDisk(cookie)  # 用自己的cookie初始化百度盘
     print 'Yunhelper 1.0\nType "?" for help,type "quit" to quit.\n\n'
-    disk.print_items(curr_dir)
+    try:
+        disk.print_items(curr_dir)
+    except Exception as e:
+        print str(e)
+        print 'Login failure.Please make sure to enter valid cookie.'
     while True:
-        cmd = raw_input('[@'+curr_dir+']>>')        # 终端提示符
-        cmd = cmd.strip()            # 去掉两端空格
+        cmd = raw_input(corlor_print(
+            '[@' + curr_dir + ']>>', fore='green'))  # 终端提示符
+        cmd = cmd.strip()  # 去掉两端空格
         if '' == cmd:
             continue
-        if 'quit' == cmd:            # 键入"quit"退出程序
+        if 'quit' == cmd:  # 键入"quit"退出程序
             print 'bye'
             break
         cmd = re.split(r'\s+', cmd)  # 分离命令生成列表
 
         if 'cd' == cmd[0]:
             temp = curr_dir
-            if cmd[1] == r'..':      # 返回上一级目录
+            if cmd[1] == r'..':  # 返回上一级目录
                 try:
                     curr_dir = curr_dir[:-1]
-                    curr_dir = curr_dir[:curr_dir.rfind(r'/')+1]
+                    curr_dir = curr_dir[:curr_dir.rfind(r'/') + 1]
                     disk.print_items(curr_dir)
                 except:
                     curr_dir = temp
                     print 'No such file or directory'
-            else:                    # 进入特定目录
+            else:  # 进入特定目录
                 try:
                     curr_dir = curr_dir + cmd[1] + '/'
                     disk.print_items(curr_dir)
@@ -65,9 +73,9 @@ def main():
         elif 'pwd' == cmd[0]:
             print curr_dir
         elif 'dl' == cmd[0]:
-            disk.dl_file(curr_dir+cmd[1])
+            disk.dl_file(curr_dir + cmd[1])
         elif 'dld' == cmd[0]:
-            disk.dl_dir_r(curr_dir+cmd[1])
+            disk.dl_dir_r(curr_dir + cmd[1])
         elif '?' == cmd[0]:
             phelp()
         else:
@@ -76,5 +84,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
