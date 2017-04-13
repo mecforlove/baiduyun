@@ -25,7 +25,7 @@ class YunDisk(object):
         if isinstance(path, unicode):
             path = path.encode('utf-8')
         url = 'http://pcs.baidu.com/rest/2.0/pcs/file?path=' + urllib.quote(
-            path) + '&method=list&app_id=266719&by=name&order=asc&limit=0-100'
+            path) + '&method=list&app_id=266719&by=time&order=desc&limit=0-100'
         req = urllib2.Request(url)
         req.add_header('Cookie', self.cookie)
         resp = self.opener.open(req)

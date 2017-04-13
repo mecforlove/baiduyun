@@ -32,15 +32,19 @@ def phelp():
 def main():
     # 测试,这里需要输入百度的一个cookie值BDUSS
     cookie = 'BDUSS=xxxxxx'
-
     curr_dir = r'/'  # 从根目录开始
     disk = YunDisk(cookie)  # 用自己的cookie初始化百度盘
-    print 'Yunhelper 1.0\nType "?" for help,type "quit" to quit.\n\n'
-    try:
+    try:  # 校验cookie合法性
         disk.print_items(curr_dir)
     except Exception as e:
         print str(e)
-        print 'Login failure.Please make sure to enter valid cookie.'
+        print corlor_print(
+            'Login failure.Please make sure to enter valid cookie.',
+            fore='red'
+        )
+        sys.exit(1)
+
+    print 'Yunhelper 1.0\nType "?" for help,type "quit" to quit.\n\n'
     while True:
         cmd = raw_input(corlor_print(
             '[@' + curr_dir + ']>>', fore='green'))  # 终端提示符
