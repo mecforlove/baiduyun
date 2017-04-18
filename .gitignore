@@ -22,6 +22,7 @@ tags
 
 # mac
 .idea
+.DS_Store
 
 # test
 test
