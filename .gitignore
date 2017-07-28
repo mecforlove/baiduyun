@@ -3,6 +3,8 @@
 *.so
 *.egg
 *.egg-info
+venv
+config.py
 #### end of python ####
 
 #### vim #### 
